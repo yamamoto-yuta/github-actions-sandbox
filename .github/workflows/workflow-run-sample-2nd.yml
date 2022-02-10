@@ -1,0 +1,16 @@
+name: workflow_run Sample 2nd
+
+on:
+  workflow_run:
+    workflows:
+      - "workflow_run Sample 1st"
+    types:
+      - completed
+
+jobs:
+  workflow_run_sample_2nd:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 2nd step
+        run: echo "2nd step"

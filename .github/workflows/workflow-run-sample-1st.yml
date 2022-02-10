@@ -1,0 +1,12 @@
+name: workflow_run Sample 1st
+
+on:
+  push:
+
+jobs:
+  workflow_run_sample_1st:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1st step
+        run: echo "1st step"
