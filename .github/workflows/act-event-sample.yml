@@ -1,0 +1,14 @@
+name: Act Event Sample
+
+on:
+  pull_request:
+
+jobs:
+  act_event_sample:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Act event test
+        run: |
+          echo ${{ github.head_ref }}
+          echo ${{ github.base_ref }}
