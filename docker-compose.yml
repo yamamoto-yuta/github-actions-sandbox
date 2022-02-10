@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  sandbox:
+    build: .
+    image: github-actions-sandbox
+    container_name: github-actions-sandbox
+    volumes:
+      - type: bind
+        source: "./"
+        target: "/home/"
+      - type: bind
+        source: "/var/run/docker.sock"
+        target: "/var/run/docker.sock"
+    tty: true
+    working_dir: /home/
