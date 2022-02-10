@@ -1,0 +1,12 @@
+name: GitHub Token Sample
+
+on:
+  push:
+
+jobs:
+  github_token_sample:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: GitHub token sample
+        run: echo ${{ github.ref }}
