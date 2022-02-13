@@ -1,0 +1,12 @@
+name: Get Tag Sample
+
+on:
+  push:
+
+jobs:
+  get_tag_sample:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get tag sample
+        run: echo ${ GITHUB_REF#refs/tags/ }
