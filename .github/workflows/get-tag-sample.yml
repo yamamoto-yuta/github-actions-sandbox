@@ -2,6 +2,7 @@ name: Get Tag Sample
 
 on:
   push:
+    tags:
 
 jobs:
   get_tag_sample:
