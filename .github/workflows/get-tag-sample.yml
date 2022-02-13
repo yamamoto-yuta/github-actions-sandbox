@@ -9,4 +9,4 @@ jobs:
 
     steps:
       - name: Get tag sample
-        run: echo ${ GITHUB_REF#refs/tags/ }
+        run: echo ${ GITHUB_REF }
