@@ -14,11 +14,9 @@ jobs:
     steps:
       - name: Get version
         id: get_version
-        env:
-          VERSION: ${GITHUB_REF#refs/tags/}
         run: |
-          echo "$VERSION"
-          echo "::set-output name=version::$VERSION"
+          echo ${GITHUB_REF#refs/tags/}
+          echo "::set-output name=version::${GITHUB_REF#refs/tags/}"
 
       - name: Upload to PyPI
         id: upload
@@ -38,9 +36,8 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          RICHCAT_VERSION: ${{ needs.upload_to_pypi.outputs.richcat_version }}
         with:
-          tag_name: v$RICHCAT_VERSION
-          release_name: Release v$RICHCAT_VERSION
+          tag_name: v${{ needs.upload_to_pypi.outputs.richcat_version }}
+          release_name: Release v${{ needs.upload_to_pypi.outputs.richcat_version }}
           draft: false
           prerelease: false
