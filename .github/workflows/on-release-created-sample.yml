@@ -1,0 +1,13 @@
+name: On Release Created Sample
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  on_release_created_sample:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo test
+        run: echo "On Release Created Sample"
