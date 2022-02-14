@@ -10,9 +10,11 @@ jobs:
     steps:
       - name: Get version
         id: get_version
+        env:
+          VERSION: ${GITHUB_REF#refs/tags/}
         run: |
-          echo "${GITHUB_REF#refs/tags/}"
-          echo "::set-output name=version::${GITHUB_REF#refs/tags/}"
+          echo "$VERSION"
+          echo "::set-output name=version::$VERSION"
 
       - name: Upload to PyPI
         if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
