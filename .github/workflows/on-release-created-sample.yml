@@ -2,7 +2,7 @@ name: On Release Created Sample
 
 on:
   release:
-    types: [created]
+    types: [published]
 
 jobs:
   on_release_created_sample:
