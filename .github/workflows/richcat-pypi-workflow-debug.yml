@@ -16,41 +16,17 @@ jobs:
 
       - name: Upload to PyPI
         id: upload
-        # if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
         run: |
           echo "Uploaded."
 
-      - name: if result success
+      - name: Create release
         if: steps.upload.conclusion == 'success'
-        run: |
-          echo "success"
-
-      - name: if result failure
-        if: steps.upload.conclusion == 'failure'
-        run: |
-          echo "failure"
-
-      - name: if result cancelled
-        if: steps.upload.conclusion == 'cancelled'
-        run: |
-          echo "cancelled"
-
-      - name: if result skipped
-        if: steps.upload.conclusion == 'skipped'
-        run: |
-          echo "skipped"
-
-      - name: if result not skipped
-        if: steps.upload.conclusion != 'skipped'
-        run: |
-          echo "not skipped"
-
-# - name: Create release
-#   uses: actions/create-release@v1
-#   env:
-#     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#   with:
-#     tag_name: v${{ needs.upload_to_pypi.outputs.richcat_version }}
-#     release_name: Release v${{ needs.upload_to_pypi.outputs.richcat_version }}
-#     draft: false
-#     prerelease: false
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ needs.upload_to_pypi.outputs.richcat_version }}
+          release_name: Release v${{ needs.upload_to_pypi.outputs.richcat_version }}
+          draft: false
+          prerelease: false
