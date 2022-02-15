@@ -16,20 +16,17 @@ jobs:
 
       - name: Upload to PyPI
         id: upload
-        # if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
         run: |
           echo "Uploaded."
 
-      - name: debug
-        run: echo v${GITHUB_REF#refs/tags/}
-
-      # - name: Create release
-      #   if: steps.upload.conclusion == 'success'
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   with:
-      #     tag_name: v${GITHUB_REF#refs/tags/}
-      #     release_name: Release v${GITHUB_REF#refs/tags/}
-      #     draft: false
-      #     prerelease: false
+      - name: Create release
+        if: steps.upload.conclusion == 'success'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v"${GITHUB_REF#refs/tags/}""
+          release_name: Release v"${GITHUB_REF#refs/tags/}"
+          draft: false
+          prerelease: false
