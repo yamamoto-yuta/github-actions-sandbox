@@ -2,8 +2,8 @@ name: Richcat PyPI Workflow Debug
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - v*
 
 jobs:
   check_version:
