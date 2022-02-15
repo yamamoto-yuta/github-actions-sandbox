@@ -28,7 +28,7 @@ jobs:
 
       - name: Get richcat version from code
         id: get_version_in_code
-        run: echo "::set-output name=version_in_code::X.X.2"
+        run: echo "::set-output name=version_in_code::X.X.3"
 
       - name: Compare version
         id: compare_version
