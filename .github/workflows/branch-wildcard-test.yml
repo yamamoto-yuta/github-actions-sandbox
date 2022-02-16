@@ -1,0 +1,14 @@
+name: branch wildcard test
+
+on:
+  push:
+    branches:
+      - hoge/v*
+
+jobs:
+  branch_wildcard_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo hello world
+        run: echo "Hello World"
