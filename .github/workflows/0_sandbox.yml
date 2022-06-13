@@ -13,8 +13,7 @@ jobs:
       - name: Prepare
         run: echo 'WORKING_DIR=/work' > ./.secrets.sample
     
-      - name: Add env
-        run: export WORKING_DIR="$(grep WORKING_DIR ./.secrets.sample | cut -d '=' -f 2)"
-        
       - name: Try here
-        run: echo $WORKING_DIR
+        run: |
+          export WORKING_DIR="$(grep WORKING_DIR ./.secrets.sample | cut -d '=' -f 2)"
+          echo $WORKING_DIR
