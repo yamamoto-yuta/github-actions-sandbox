@@ -9,11 +9,8 @@ jobs:
     name: sandbox
     runs-on: ubuntu-latest
     
-    steps:
-      - name: Prepare
-        run: echo 'WORKING_DIR=/work' > ./.secrets.sample
-    
+    steps:    
       - name: Try here
         run: |
-          export WORKING_DIR="$(grep WORKING_DIR ./.secrets.sample | cut -d '=' -f 2)"
+          export WORKING_DIR=$PWD
           echo $WORKING_DIR
