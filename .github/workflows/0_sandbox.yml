@@ -1,0 +1,16 @@
+name: Sandbox Workflow
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  sandbox:
+    name: sandbox
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIR: grep WORKING_DIR ./.secrets.sample | cut -d '=' -f 2
+
+    steps:
+      - name: Try here
+        run: echo $WORKING_DIR
