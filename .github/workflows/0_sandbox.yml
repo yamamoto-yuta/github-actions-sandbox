@@ -8,9 +8,10 @@ jobs:
   sandbox:
     name: sandbox
     runs-on: ubuntu-latest
-    env:
-      WORKING_DIR: grep WORKING_DIR ./.secrets.sample | cut -d '=' -f 2
-
+    
     steps:
+      - name: Add env
+        run: echo $(grep WORKING_DIR ./.secrets.sample | cut -d '=' -f 2) >> $GITHUB_ENV
+        
       - name: Try here
         run: echo $WORKING_DIR
